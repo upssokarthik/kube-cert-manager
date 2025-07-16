@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - myhostname.local
+    - hostnameapp.kubeexample.local
     secretName: myhostname-tls
   rules:
-  - host: myhostname.local
+  - host: hostnameapp.kubeexample.local
     http:
       paths:
       - path: /
@@ -23,4 +23,3 @@ spec:
             name: hostname-service
             port:
               number: 80
-`
