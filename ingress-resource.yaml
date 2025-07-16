@@ -1,0 +1,25 @@
+# 5. Ingress Resource with TLS
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hostname-ingress
+  namespace: demoapp
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - myhostname.local
+    secretName: myhostname-tls
+  rules:
+  - host: myhostname.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hostname-service
+            port:
+              number: 80

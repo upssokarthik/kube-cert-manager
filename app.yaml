@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostname-app
+  namespace: demoapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hostname-app
+  template:
+    metadata:
+      labels:
+        app: hostname-app
+    spec:
+      containers:
+      - name: echo
+        image: hashicorp/http-echo
+        args: ["-text=Hostname: $(HOSTNAME)"]
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 5678
