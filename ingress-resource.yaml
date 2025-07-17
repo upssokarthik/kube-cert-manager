@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/ingress.class: "nginx"
     cert-manager.io/issuer: cloud-venafi-issuer
-    cert-manager.io/common-name: hostnameapp.kubeexample.local
+    cert-manager.io/common-name: hostnameapp1.kubeexample.local
     cert-manager.io/subject-organizations: Cyberark
     cert-manager.io/subject-organizationalunits: IT
     cert-manager.io/subject-countries: IN
@@ -18,10 +18,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - hostnameapp.kubeexample.local
+    - hostnameapp1.kubeexample.local
     secretName: kubeapp-tls-secret
   rules:
-  - host: hostnameapp.kubeexample.local
+  - host: hostnameapp1.kubeexample.local
     http:
       paths:
       - path: /
